@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <title>(public) - Home Page</title>
+</head>
+
+<body>
+    <script>
+        const goToSecurePage = () => {
+            const secureUrl = window.location.origin + '/secure-page' + '?auth=' + localStorage.getItem('token');
+            window.location.href = secureUrl
+        }
+        const goToLoginPage = () => {
+            const publicUrl = window.location.origin + '/login-page';
+            window.location.href = publicUrl
+        }
+        const goToSecurePageWithoutAuth = () => {
+            const secureUrl = window.location.origin + '/secure-page';
+            window.location.href = secureUrl
+        }
+    </script>
+
+    NO username password - <button onclick="goToSecurePage()">login using saved jwt</button>
+    <br /><br />
+    username password - <button onclick="goToLoginPage()">login & get jwt</button>
+
+    <br /><br />
+    try without any auth - <button onclick="goToSecurePageWithoutAuth()">no auth bruh</button>
+</body>
+
+</html>

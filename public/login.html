@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title>(public) - Login Page</title>
+</head>
+
+<body>
+    <script>
+        const fetchData = async () => {
+            try {
+                const signInUrl = window.location.origin + '/signin';
+                const username = document.getElementById("username").value
+                const password = document.getElementById("password").value
+                const postData = {
+                    username: username,
+                    password: password
+                };
+                const response = await fetch(signInUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(postData),
+                });
+                const data = await response.json();
+                localStorage.setItem('token', data.token);
+                window.location.href = window.location.origin
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
+        }
+    </script>
+    <p>username</p>
+    <input type="text" id="username" />
+    <p>password</p>
+    <input type="password" id="password" />
+    <br /><br />
+    <button onclick="fetchData()">submit</button>
+</body>
+
+</html>
