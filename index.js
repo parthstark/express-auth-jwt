@@ -23,12 +23,12 @@ const authMiddleWare = (req, res, next) => {
 }
 
 app.get('/', (req, res) => {
-    const baseHtmlFile = path.join(__dirname, 'public', 'base.html');
+    const baseHtmlFile = path.resolve('./public/base.html');
     res.sendFile(baseHtmlFile)
 })
 
 app.get('/login-page', (req, res) => {
-    const loginHtmlFile = path.join(__dirname, 'public', 'login.html');
+    const loginHtmlFile = path.resolve('./public/login.html');
     res.sendFile(loginHtmlFile);
 })
 
